@@ -4,9 +4,12 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
+    public TMP_Text roomInfo;
+
     // Start is called before the first frame update
     void Start()
     {
