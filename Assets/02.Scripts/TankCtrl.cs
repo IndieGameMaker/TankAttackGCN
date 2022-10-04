@@ -6,6 +6,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using Cinemachine;
+using TMPro;
 
 public class TankCtrl : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class TankCtrl : MonoBehaviour
     public GameObject cannonPrefab; //생성할 포탄 프리팹
     public Transform firePos;       //생성할 위치
     public AudioClip fireSfx;       //효과음 음원파일
+    public TMP_Text userId;
 
     void Awake()
     {
