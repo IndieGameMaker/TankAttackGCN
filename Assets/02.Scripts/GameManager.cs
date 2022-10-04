@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         Debug.Log(PhotonNetwork.CurrentRoom.Name);
         CreateTank();
+        DisplayRoomInfo();
     }
 
     void CreateTank()
@@ -37,5 +38,25 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         // 로비씬을 로딩
         SceneManager.LoadScene("Lobby");
+    }
+
+    void DisplayRoomInfo()
+    {
+        Room currRoom = PhotonNetwork.CurrentRoom;
+        // 룸 정보 표시
+        string roomInfoText = $"{currRoom.Name} ({currRoom.PlayerCount}/{currRoom.MaxPlayers})";
+        roomInfo.text = roomInfoText;
+    }
+
+    // 플레이어가 입장했을 때 호출되는 콜백
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        DisplayRoomInfo();
+    }
+
+    // 플레이어가 퇴장했을 때 호출되는 콜백
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        DisplayRoomInfo();
     }
 }
