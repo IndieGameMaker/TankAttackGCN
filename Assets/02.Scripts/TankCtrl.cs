@@ -77,7 +77,7 @@ public class TankCtrl : MonoBehaviour
     [PunRPC]
     void Fire()
     {
-        audio.PlayOneShot(fireSfx);
+        audio.PlayOneShot(fireSfx, 0.5f);
         Instantiate(cannonPrefab, firePos.position, firePos.rotation);
     }
 }
