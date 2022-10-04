@@ -9,6 +9,7 @@ using TMPro;
 public class GameManager : MonoBehaviourPunCallbacks
 {
     public TMP_Text roomInfo;
+    public TMP_Text playerList;
 
     // Start is called before the first frame update
     void Start()
