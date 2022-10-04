@@ -47,6 +47,22 @@ public class GameManager : MonoBehaviourPunCallbacks
         // 룸 정보 표시
         string roomInfoText = $"{currRoom.Name} ({currRoom.PlayerCount}/{currRoom.MaxPlayers})";
         roomInfo.text = roomInfoText;
+
+        string _players = "";
+
+        foreach (var player in PhotonNetwork.PlayerList)
+        {
+            if (player.IsMasterClient) // 방장 : Red
+            {
+                _players += $"<color=#ff0000>{player.NickName}</color>\n";
+            }
+            else
+            {
+                _players += $"<color=#00ff00>{player.NickName}</color>\n";
+            }
+        }
+
+        playerList.text = _players;
     }
 
     // 플레이어가 입장했을 때 호출되는 콜백
