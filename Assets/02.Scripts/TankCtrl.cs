@@ -34,6 +34,9 @@ public class TankCtrl : MonoBehaviour
         pv = GetComponent<PhotonView>();
         audio = GetComponent<AudioSource>();
 
+        // Tank의 UserId 표시
+        userId.text = pv.Owner.NickName;
+
         cm = GameObject.Find("CM vcam1")?.GetComponent<CinemachineVirtualCamera>();
 
         // PhotonView.IsMine False인 경우 => 네트워크 유저의 탱크 => 물리엔진 적용 X
