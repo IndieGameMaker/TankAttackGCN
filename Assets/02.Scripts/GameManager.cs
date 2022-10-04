@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LeaveRoom();
     }
 
+    // 포톤 서버에서 룸에서 나갔을 때 호출된는 콜백
     public override void OnLeftRoom()
     {
         // 로비씬을 로딩
