@@ -93,6 +93,29 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinRandomRoom();
     }
 
+    // 룸 생성 버튼 클릭 이벤트
+    public void OnMakeRoomButtonClick()
+    {
+        SetUserId();
+
+        // 룸 이름이 없을 경우 
+        if (string.IsNullOrEmpty(roomName_IF.text))
+        {
+            roomName_IF.text = $"ROOM_{Random.Range(0, 1000):000}";
+        }
+
+        // 룸 속성을 정의
+        RoomOptions ro = new RoomOptions
+        {
+            MaxPlayers = 20,
+            IsOpen = true,
+            IsVisible = true
+        };
+
+        // 룸 생성
+        PhotonNetwork.CreateRoom(roomName_IF.text, ro);
+    }
+
     void SetUserId()
     {
         // 유저아이디 필드가 Null 또는 "" 일 경우를 확인
