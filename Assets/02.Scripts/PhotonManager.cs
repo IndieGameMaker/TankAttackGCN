@@ -26,8 +26,11 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         PhotonNetwork.GameVersion = gameVersion;
         PhotonNetwork.NickName = userId;
 
-        // 포톤서버에 접속
-        PhotonNetwork.ConnectUsingSettings();
+        if (PhotonNetwork.IsConnected == false)
+        {
+            // 포톤서버에 접속
+            PhotonNetwork.ConnectUsingSettings();
+        }
     }
 
     void Start()
