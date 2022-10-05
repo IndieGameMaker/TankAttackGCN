@@ -8,6 +8,8 @@ using TMPro;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
+    public static GameManager instance = null;
+
     public TMP_Text roomInfo;
     public TMP_Text playerList;
     public TMP_Text chatMsg;
@@ -15,7 +17,11 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private PhotonView pv;
 
-    // Start is called before the first frame update
+    void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
         pv = GetComponent<PhotonView>();
