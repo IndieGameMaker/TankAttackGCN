@@ -125,7 +125,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         PhotonNetwork.CreateRoom(roomName_IF.text, ro);
     }
 
-    void SetUserId()
+    public void SetUserId()
     {
         // 유저아이디 필드가 Null 또는 "" 일 경우를 확인
         if (string.IsNullOrEmpty(userId_IF.text))

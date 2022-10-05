@@ -31,6 +31,11 @@ public class RoomData : MonoBehaviour
                 () =>
                 {
                     Debug.Log(roomInfo.Name + " 버튼 클릭됨");
+
+                    // PhotonManager 검색
+                    GameObject.Find("PhotonManager")?.GetComponent<PhotonManager>().SetUserId();
+
+
                     PhotonNetwork.JoinRoom(roomInfo.Name);
                 }
             );
