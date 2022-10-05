@@ -70,7 +70,7 @@ public class TankCtrl : MonoBehaviour
             {
                 //Fire();
                 //RPC 호출
-                pv.RPC("Fire", RpcTarget.AllViaServer, null);
+                pv.RPC("Fire", RpcTarget.AllViaServer, pv.Owner.ActorNumber);
             }
         }
     }
@@ -85,10 +85,11 @@ public class TankCtrl : MonoBehaviour
     }
 
     [PunRPC]
-    void Fire()
+    void Fire(int _actorNumber)
     {
         audio.PlayOneShot(fireSfx, 0.5f);
-        Instantiate(cannonPrefab, firePos.position, firePos.rotation);
+        var obj = Instantiate(cannonPrefab, firePos.position, firePos.rotation);
+        obj.GetComponent<Cannon>().actorNumber = _actorNumber;
     }
 
     // 충돌 콜백 함수
@@ -99,6 +100,9 @@ public class TankCtrl : MonoBehaviour
             currHp -= 20.0f;
             // Hp Bar 갱신
             hpBar.fillAmount = currHp / initHp;
+
+            int _actorNumber = coll.gameObject.GetComponent<Cannon>().actorNumber;
+            Debug.Log("Hit by " + _actorNumber);
 
             if (currHp <= 0.0f)
             {

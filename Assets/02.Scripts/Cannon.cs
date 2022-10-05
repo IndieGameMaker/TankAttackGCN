@@ -7,6 +7,8 @@ public class Cannon : MonoBehaviour
     public GameObject expEffect;
     public float speed = 3000.0f;
 
+    public int actorNumber;
+
     void Start()
     {
         GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * speed);
