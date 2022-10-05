@@ -112,6 +112,8 @@ public class GameManager : MonoBehaviourPunCallbacks
         chatMsg.text += $"{msg}\n"; // msg + "\n";
     }
 
+
+
     // 방장이 변경됐을경우 호출 되는 콜백 함수
     public override void OnMasterClientSwitched(Player newMasterClient)
     {
@@ -120,6 +122,13 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             SendChatMessage(newMasterClient.NickName + " is new Master.");
         }
+
+        // 방장권한을 다른 유저에 위임 하는 코드
+        // if (PhotonNetwork.IsMasterClient)
+        // {
+        //     Player newMaster = PhotonNetwork.CurrentRoom.GetPlayer(_actorNumber);
+        //     PhotonNetwork.SetMasterClient(newMaster);
+        // }
     }
 
 }
