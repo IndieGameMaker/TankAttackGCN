@@ -18,6 +18,9 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public TMP_InputField userId_IF;
     public TMP_InputField roomName_IF;
 
+    public GameObject roomPrefab;
+    public Transform contentTr;
+
     void Awake()
     {
         // 방장이 로딩한 씬을 자동으로 로딩시켜주는 옵션
