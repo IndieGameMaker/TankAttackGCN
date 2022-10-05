@@ -3,6 +3,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 using Cinemachine;
@@ -26,6 +27,7 @@ public class TankCtrl : MonoBehaviour
     public Transform firePos;       //생성할 위치
     public AudioClip fireSfx;       //효과음 음원파일
     public TMP_Text userId;
+    public Image hpBar;
 
     private float initHp = 100.0f;
     private float currHp = 100.0f; // currHp / initHp 
