@@ -95,6 +95,11 @@ public class GameManager : MonoBehaviourPunCallbacks
         pv.RPC("ChatMessage", RpcTarget.AllBufferedViaServer, msg);
     }
 
+    public void SendChatMessage(string msg)
+    {
+        pv.RPC("ChatMessage", RpcTarget.AllBufferedViaServer, msg);
+    }
+
     // Chatting RPC Function
     [PunRPC]
     public void ChatMessage(string msg)
