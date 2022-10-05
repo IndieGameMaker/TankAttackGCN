@@ -21,6 +21,9 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public GameObject roomPrefab;
     public Transform contentTr;
 
+    // 룸 목록을 저장하기 위한 딕셔너리 자료형
+    private Dictionary<string, GameObject> roomDict = new Dictionary<string, GameObject>();
+
     void Awake()
     {
         // 방장이 로딩한 씬을 자동으로 로딩시켜주는 옵션
@@ -143,9 +146,37 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     // 룸 목록이 갱신될때마다 호출되는 콜백
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
+        GameObject temp = null;
+
         foreach (var room in roomList)
         {
-            Debug.Log(room.Name);
+            // 룸이 삭제된 경우
+            if (room.RemovedFromList == true)
+            {
+                // 딕셔너리에서 룸 삭제
+                if (roomDict.TryGetValue(room.Name, out temp))
+                {
+                    // Contens 하위에 있는 Room 프리팹 삭제
+                    Destroy(temp);
+                    // 딕셔너리에서 룸 정보 삭제
+                    roomDict.Remove(room.Name);
+                }
+            }
+            else
+            {
+                // 신규로 생성된 룸일 경우
+                if (roomDict.ContainsKey(room.Name) == false)
+                {
+                    // 룸 추가
+                    var _room = Instantiate(roomPrefab, contentTr);
+                    // 딕셔너리에 데이터를 추가
+                    roomDict.Add(room.Name, _room);
+                }
+                else
+                {
+                    // 룸 정보를 갱신
+                }
+            }
         }
     }
 }
