@@ -139,4 +139,13 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
         PhotonNetwork.NickName = userId;
     }
+
+    // 룸 목록이 갱신될때마다 호출되는 콜백
+    public override void OnRoomListUpdate(List<RoomInfo> roomList)
+    {
+        foreach (var room in roomList)
+        {
+            Debug.Log(room.Name);
+        }
+    }
 }
