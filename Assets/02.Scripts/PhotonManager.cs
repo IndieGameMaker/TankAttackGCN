@@ -174,7 +174,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
                 }
                 else
                 {
-                    // 룸 정보를 갱신
+                    // 룸 정보를 갱신.
                 }
             }
         }
