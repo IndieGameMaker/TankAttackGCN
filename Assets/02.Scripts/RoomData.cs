@@ -25,6 +25,15 @@ public class RoomData : MonoBehaviour
             //룸 정보를 갱신   "MyRoom (5/20)"
             string msg = $"{roomInfo.Name} ({roomInfo.PlayerCount}/{roomInfo.MaxPlayers})";
             roomText.text = msg;
+
+            // 버튼 클릭시 호출할 이벤트를 연결 (람다식, Delegate)
+            GetComponent<UnityEngine.UI.Button>().onClick.AddListener(
+                () =>
+                {
+                    Debug.Log(roomInfo.Name + " 버튼 클릭됨");
+                    PhotonNetwork.JoinRoom(roomInfo.Name);
+                }
+            );
         }
     }
 
