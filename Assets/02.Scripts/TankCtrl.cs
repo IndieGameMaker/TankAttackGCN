@@ -102,10 +102,15 @@ public class TankCtrl : MonoBehaviour
             hpBar.fillAmount = currHp / initHp;
 
             int _actorNumber = coll.gameObject.GetComponent<Cannon>().actorNumber;
-            Debug.Log("Hit by " + _actorNumber);
+
+            // ActorNumber로 Player 정보를 추출
+            Player shooter = PhotonNetwork.CurrentRoom.GetPlayer(_actorNumber);
 
             if (currHp <= 0.0f)
             {
+                // [Zackiller] is killed by [Shooter]!
+                string msg = $"[{pv.Owner.NickName}] is killed by [{shooter.NickName}]";
+
                 TankDestroy();
             }
         }
