@@ -116,6 +116,7 @@ public class TankCtrl : MonoBehaviour
     void RespawnTank()
     {
         currHp = initHp;
+        hpBar.fillAmount = 1.0f;
         SetVisible(true);
     }
 
@@ -126,6 +127,8 @@ public class TankCtrl : MonoBehaviour
         {
             _renderer.enabled = isVisible;
         }
+
+        tr.Find("Canvas").gameObject.SetActive(isVisible);
     }
 }
 
