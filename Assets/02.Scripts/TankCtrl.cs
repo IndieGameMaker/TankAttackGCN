@@ -27,6 +27,9 @@ public class TankCtrl : MonoBehaviour
     public AudioClip fireSfx;       //효과음 음원파일
     public TMP_Text userId;
 
+    private float initHp = 100.0f;
+    private float currHp = 100.0f; // currHp / initHp 
+
     void Awake()
     {
         tr = GetComponent<Transform>();
@@ -84,6 +87,39 @@ public class TankCtrl : MonoBehaviour
     {
         audio.PlayOneShot(fireSfx, 0.5f);
         Instantiate(cannonPrefab, firePos.position, firePos.rotation);
+    }
+
+    void OnCollisionEnter(Collision coll)
+    {
+        if (coll.collider.CompareTag("CANNON"))
+        {
+            currHp -= 20.0f;
+            if (currHp <= 0.0f)
+            {
+                TankDestroy();
+            }
+        }
+    }
+
+    void TankDestroy()
+    {
+        SetVisible(false);
+        Invoke("RespawnTank", 3.0f);
+    }
+
+    void RespawnTank()
+    {
+        currHp = initHp;
+        SetVisible(true);
+    }
+
+    void SetVisible(bool isVisible)
+    {
+        Renderer[] renderers = GetComponentsInChildren<Renderer>();
+        foreach (var _renderer in renderers)
+        {
+            _renderer.enabled = isVisible;
+        }
     }
 }
 
