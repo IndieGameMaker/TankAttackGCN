@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         DisplayRoomInfo();
 
-        string msg = $"<color=#00ff00>[newPlayer.NickName]</color> is joined.";
+        string msg = $"<color=#00ff00>[{newPlayer.NickName}]</color> is joined.";
         ChatMessage(msg);
     }
 
@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         DisplayRoomInfo();
-        string msg = $"<color=#ff0000>[otherPlayer.NickName]</color> is left room.";
+        string msg = $"<color=#ff0000>[{otherPlayer.NickName}]</color> is left room.";
         ChatMessage(msg);
     }
 
