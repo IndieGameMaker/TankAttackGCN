@@ -177,7 +177,10 @@ public class PhotonManager : MonoBehaviourPunCallbacks
                 else
                 {
                     // 룸 정보를 갱신.
-
+                    if (roomDict.TryGetValue(room.Name, out temp))
+                    {
+                        temp.GetComponent<RoomData>().RoomInfo = room;
+                    }
                 }
             }
         }
