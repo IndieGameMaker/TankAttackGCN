@@ -112,6 +112,16 @@ public class GameManager : MonoBehaviourPunCallbacks
         chatMsg.text += $"{msg}\n"; // msg + "\n";
     }
 
+    // 방장이 변경됐을경우 호출 되는 콜백 함수
+    public override void OnMasterClientSwitched(Player newMasterClient)
+    {
+        // 자신이 방장 지위를 인계했을 경우 다른 유저에게 RPC로 메시지를 전달하는 로직
+        if (pv.IsMine && newMasterClient.ActorNumber == pv.OwnerActorNr)
+        {
+            SendChatMessage(newMasterClient.NickName + " is new Master.");
+        }
+    }
+
 }
 
 
