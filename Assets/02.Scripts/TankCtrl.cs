@@ -9,7 +9,7 @@ using Photon.Realtime;
 using Cinemachine;
 using TMPro;
 
-public class TankCtrl : MonoBehaviour
+public class TankCtrl : MonoBehaviour, IPunObservable
 {
     private Transform tr;
     private Rigidbody rb;
@@ -144,6 +144,28 @@ public class TankCtrl : MonoBehaviour
 
         tr.Find("Canvas").gameObject.SetActive(isVisible);
     }
+
+
+    // 네트워크에서 수신한 데이터를 저장하기 위한 변수
+    private Vector3 receivePos = Vector3.zero;
+    private Quaternion receiveRot = Quaternion.identity;
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            // 송신 (PhotonView.IsMine == true)
+            stream.SendNext(tr.position); // 위치값 전송
+            stream.SendNext(tr.rotation); // 회전값 전송
+        }
+        else
+        {
+            // 수신 (PhotonView.IsMine == false)
+            receivePos = (Vector3)stream.ReceiveNext();
+            receiveRot = (Quaternion)stream.ReceiveNext();
+        }
+    }
+
 }
 
 
