@@ -110,7 +110,7 @@ public class TankCtrl : MonoBehaviour
             {
                 // [Zackiller] is killed by [Shooter]!
                 string msg = $"[<color=#00ff00>{pv.Owner.NickName}</color>] is killed by [<color=#ff0000>{shooter.NickName}</color>]";
-
+                Debug.Log(msg);
                 TankDestroy();
             }
         }
