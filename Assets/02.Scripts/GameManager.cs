@@ -13,10 +13,13 @@ public class GameManager : MonoBehaviourPunCallbacks
     public TMP_Text chatMsg;
     public TMP_InputField msg_IF;
 
+    private PhotonView pv;
+
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(PhotonNetwork.CurrentRoom.Name);
+        pv = GetComponent<PhotonView>();
+
         CreateTank();
         DisplayRoomInfo();
     }
