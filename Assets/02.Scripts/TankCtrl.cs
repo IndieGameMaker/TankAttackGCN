@@ -109,7 +109,7 @@ public class TankCtrl : MonoBehaviour
             if (currHp <= 0.0f)
             {
                 // [Zackiller] is killed by [Shooter]!
-                string msg = $"[{pv.Owner.NickName}] is killed by [{shooter.NickName}]";
+                string msg = $"[<color=#00ff00>{pv.Owner.NickName}</color>] is killed by [<color=#ff0000>{shooter.NickName}</color>]";
 
                 TankDestroy();
             }
