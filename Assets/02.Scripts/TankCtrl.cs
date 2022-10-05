@@ -95,7 +95,7 @@ public class TankCtrl : MonoBehaviour
     // 충돌 콜백 함수
     void OnCollisionEnter(Collision coll)
     {
-        if (coll.collider.CompareTag("CANNON"))
+        if (coll.collider.CompareTag("CANNON") && currHp > 0.0f)
         {
             currHp -= 20.0f;
             // Hp Bar 갱신
