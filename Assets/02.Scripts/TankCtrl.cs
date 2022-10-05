@@ -97,6 +97,9 @@ public class TankCtrl : MonoBehaviour
         if (coll.collider.CompareTag("CANNON"))
         {
             currHp -= 20.0f;
+            // Hp Bar 갱신
+            hpBar.fillAmount = currHp / initHp;
+
             if (currHp <= 0.0f)
             {
                 TankDestroy();
