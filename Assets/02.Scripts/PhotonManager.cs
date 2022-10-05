@@ -169,12 +169,15 @@ public class PhotonManager : MonoBehaviourPunCallbacks
                 {
                     // 룸 추가
                     var _room = Instantiate(roomPrefab, contentTr);
+                    _room.GetComponent<RoomData>().RoomInfo = room;
+
                     // 딕셔너리에 데이터를 추가
                     roomDict.Add(room.Name, _room);
                 }
                 else
                 {
                     // 룸 정보를 갱신.
+
                 }
             }
         }
