@@ -73,6 +73,11 @@ public class TankCtrl : MonoBehaviour, IPunObservable
                 pv.RPC("Fire", RpcTarget.AllViaServer, pv.Owner.ActorNumber);
             }
         }
+        else
+        {
+            tr.position = Vector3.Lerp(tr.position, receivePos, Time.deltaTime * 20.0f);
+            tr.rotation = Quaternion.Slerp(tr.rotation, receiveRot, Time.deltaTime * 20.0f);
+        }
     }
 
     void Move()
