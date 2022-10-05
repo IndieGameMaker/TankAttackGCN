@@ -84,6 +84,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public void OnSendChatMessage(string msg)
     {
+        //Debug.Log(msg);
+        msg = msg_IF.text;
         pv.RPC("ChatMessage", RpcTarget.AllBufferedViaServer, msg);
     }
 
