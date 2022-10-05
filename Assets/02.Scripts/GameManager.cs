@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public void OnSendChatMessage(string msg)
     {
         //Debug.Log(msg);
-        msg = msg_IF.text;
+        msg = $"[<color=#00ff00>{PhotonNetwork.NickName}</color>] {msg_IF.text}";
         pv.RPC("ChatMessage", RpcTarget.AllBufferedViaServer, msg);
     }
 
