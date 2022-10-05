@@ -89,6 +89,7 @@ public class TankCtrl : MonoBehaviour
         Instantiate(cannonPrefab, firePos.position, firePos.rotation);
     }
 
+    // 충돌 콜백 함수
     void OnCollisionEnter(Collision coll)
     {
         if (coll.collider.CompareTag("CANNON"))
