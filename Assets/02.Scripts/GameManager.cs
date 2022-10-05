@@ -80,12 +80,17 @@ public class GameManager : MonoBehaviourPunCallbacks
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         DisplayRoomInfo();
+
+        string msg = $"<color=#00ff00>[newPlayer.NickName]</color> is joined.";
+        ChatMessage(msg);
     }
 
     // 플레이어가 퇴장했을 때 호출되는 콜백
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         DisplayRoomInfo();
+        string msg = $"<color=#ff0000>[otherPlayer.NickName]</color> is left room.";
+        ChatMessage(msg);
     }
 
     public void OnSendChatMessage(string msg)
