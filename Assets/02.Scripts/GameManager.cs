@@ -81,6 +81,19 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         DisplayRoomInfo();
     }
+
+    public void OnSendChatMessage(string msg)
+    {
+        pv.RPC("ChatMessage", RpcTarget.AllBufferedViaServer, msg);
+    }
+
+    // Chatting RPC Function
+    [PunRPC]
+    public void ChatMessage(string msg)
+    {
+        chatMsg.text += $"{msg}\n"; // msg + "\n";
+    }
+
 }
 
 
