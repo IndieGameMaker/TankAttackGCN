@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 {
     public TMP_Text roomInfo;
     public TMP_Text playerList;
+    public TMP_Text chatMsg;
+    public TMP_InputField msg_IF;
 
     // Start is called before the first frame update
     void Start()
